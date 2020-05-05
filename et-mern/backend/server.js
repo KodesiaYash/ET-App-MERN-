@@ -9,6 +9,12 @@ require('dotenv').config() ;
 
 // ---------- Connecting the database --------- 
 // Connection string from Mongo DB 
+const app = express() ;
+const port = process.env.PORT || 5000 ;
+
+app.use(cors()) ;
+app.use(express.json()) ;
+
 const uri = process.env.ATLAS_URI ;
 
 // connecting MongoDB 
@@ -17,13 +23,14 @@ const connection = mongoose.connection ;
 connection.once('open' , () => {
     console.log("MongoDB database connected successfully") ;
 })
+// Creating routes to the data ---------------------
+const exerciseRouter = require('./routes/exercises') ;
+const userRouter = require('./routes/users') ;
 
-// -------------- Creating the app ------------ 
-const app = express() ;
-const port = process.env.PORT || 5000 ;
+app.use('/exercises' , exerciseRouter ) ;
+app.use('/users' , userRouter ) ;
 
-app.use(cors()) ;
-app.use(express.json()) ;
+
 
 app.listen(port,() => 
     {console.log(`Server is running on port : ${port}`)}) ;

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose') ;
-const Schema = mongoose.schema ;
+const Schema = mongoose.Schema ;
 
-const excerciseSchema = new Schema({
+const exerciseSchema = new Schema({
     username : { type : String ,  required : true } ,
     description : {  type : String ,  required : true } ,
     duration : {  type : Number ,  required : true } ,
@@ -10,5 +10,5 @@ const excerciseSchema = new Schema({
     timestamps : true ,
 }) ;
 
-const Excercise = mongoose.model('Excercise' , excerciseSchema ) ;
-module.exports = Excercise ;
+const Exercise = mongoose.model('Exercise' , exerciseSchema ) ;
+module.exports = Exercise ;
