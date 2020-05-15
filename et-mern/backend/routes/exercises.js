@@ -6,7 +6,7 @@ router.route('/').get( (req,res) => {
         .then( (exercises) => res.json(exercises))
         .catch( (err) => res.status(400).json('Error' + err) )
 }) ;
-
+// add controllers seperately
 router.route('/add').post( (req,res) => {
     const username = req.body.username ;
     const description = req.body.description ;
